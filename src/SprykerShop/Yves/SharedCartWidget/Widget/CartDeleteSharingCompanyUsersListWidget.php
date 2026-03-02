@@ -18,35 +18,21 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class CartDeleteSharingCompanyUsersListWidget extends AbstractWidget
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addCustomerCollectionParameter($quoteTransfer);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'CartDeleteSharingCompanyUsersListWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-sharing-users/shared-cart-sharing-users.twig';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addCustomerCollectionParameter(QuoteTransfer $quoteTransfer): void
     {
         $customerCollectionTransfer = $this->getFactory()
@@ -63,12 +49,6 @@ class CartDeleteSharingCompanyUsersListWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerCollectionTransfer $customerCollectionTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $excludingCustomerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     protected function excludeCustomerFromCustomerCollection(
         CustomerCollectionTransfer $customerCollectionTransfer,
         CustomerTransfer $excludingCustomerTransfer

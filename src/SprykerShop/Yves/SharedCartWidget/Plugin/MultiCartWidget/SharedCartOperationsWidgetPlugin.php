@@ -22,11 +22,6 @@ class SharedCartOperationsWidgetPlugin extends AbstractWidgetPlugin implements S
 {
     use PermissionAwareTrait;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     public function initialize(QuoteTransfer $quoteTransfer): void
     {
         $widget = new SharedCartOperationsWidget($quoteTransfer);

@@ -56,38 +56,21 @@ class SharedCartDetailsWidget extends AbstractWidget
         return $actions;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $currentQuoteTransfer
-     *
-     * @return bool
-     */
     protected function isDeleteCartAllowed(QuoteTransfer $currentQuoteTransfer): bool
     {
         return $this->getFactory()->getSharedCartClient()->isQuoteDeletable($currentQuoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteOwner(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         return $customerTransfer->getCustomerReference() === $quoteTransfer->getCustomerReference();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'SharedCartDetailsWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-details/shared-cart-details.twig';

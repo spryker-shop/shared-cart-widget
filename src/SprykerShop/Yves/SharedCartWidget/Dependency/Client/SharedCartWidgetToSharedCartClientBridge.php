@@ -26,41 +26,21 @@ class SharedCartWidgetToSharedCartClientBridge implements SharedCartWidgetToShar
         $this->sharedCartClient = $sharedCartClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string|null
-     */
     public function getQuoteAccessLevel(QuoteTransfer $quoteTransfer): ?string
     {
         return $this->sharedCartClient->getQuoteAccessLevel($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShareDetailCollectionTransfer
-     */
     public function getShareDetailsByIdQuoteAction(QuoteTransfer $quoteTransfer): ShareDetailCollectionTransfer
     {
         return $this->sharedCartClient->getShareDetailsByIdQuoteAction($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteDeletable(QuoteTransfer $quoteTransfer): bool
     {
         return $this->sharedCartClient->isQuoteDeletable($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerCollectionTransfer
-     */
     public function getCustomerCollectionByQuote(QuoteTransfer $quoteTransfer): CustomerCollectionTransfer
     {
         return $this->sharedCartClient->getCustomerCollectionByQuote($quoteTransfer);

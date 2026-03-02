@@ -19,11 +19,6 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
  */
 class SharedCartPermissionGroupWidgetPlugin extends AbstractWidgetPlugin implements SharedCartPermissionGroupWidgetPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     public function initialize(QuoteTransfer $quoteTransfer): void
     {
         $widget = new SharedCartPermissionGroupWidget($quoteTransfer);

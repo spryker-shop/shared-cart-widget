@@ -15,9 +15,6 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class SharedCartShareWidget extends AbstractWidget
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addParameter('cart', $quoteTransfer)
@@ -36,17 +33,11 @@ class SharedCartShareWidget extends AbstractWidget
         return $customer->getCustomerReference() === $quoteTransfer->getCustomerReference();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'SharedCartShareWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-share/shared-cart-share.twig';

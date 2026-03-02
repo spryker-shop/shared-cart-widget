@@ -17,35 +17,21 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class CartDeleteCompanyUsersListWidget extends AbstractWidget
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addQuoteShareDetailsParameter($quoteTransfer);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'CartDeleteCompanyUsersListWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-users/shared-cart-users.twig';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addQuoteShareDetailsParameter(QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter(

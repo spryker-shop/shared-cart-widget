@@ -15,20 +15,12 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class SharedCartPermissionGroupWidget extends AbstractWidget
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addParameter('cart', $quoteTransfer)
             ->addParameter('accessType', $this->getAccessType($quoteTransfer));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string|null
-     */
     protected function getAccessType(QuoteTransfer $quoteTransfer): ?string
     {
         return $this->getFactory()
@@ -36,17 +28,11 @@ class SharedCartPermissionGroupWidget extends AbstractWidget
             ->getQuoteAccessLevel($quoteTransfer);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'SharedCartPermissionGroupWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-permission/shared-cart-permission.twig';

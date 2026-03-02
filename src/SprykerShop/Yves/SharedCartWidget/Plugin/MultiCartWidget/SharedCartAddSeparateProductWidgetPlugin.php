@@ -15,9 +15,6 @@ use SprykerShop\Yves\MultiCartWidget\Dependency\Plugin\SharedCartWidget\SharedCa
  */
 class SharedCartAddSeparateProductWidgetPlugin extends AbstractWidgetPlugin implements SharedCartAddSeparateProductWidgetPluginInterface
 {
-    /**
-     * @return void
-     */
     public function initialize(): void
     {
     }

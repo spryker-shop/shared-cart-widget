@@ -11,13 +11,7 @@ use Generated\Shared\Transfer\QuoteCollectionTransfer;
 
 interface SharedCartWidgetToMultiCartClientInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\QuoteCollectionTransfer
-     */
     public function getQuoteCollection(): QuoteCollectionTransfer;
 
-    /**
-     * @return bool
-     */
     public function isQuoteDeletable(): bool;
 }

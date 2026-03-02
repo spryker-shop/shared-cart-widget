@@ -19,9 +19,6 @@ class SharedCartOperationsWidget extends AbstractWidget
 {
     use PermissionAwareTrait;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -77,11 +74,6 @@ class SharedCartOperationsWidget extends AbstractWidget
         return $this->can('ReadSharedCartPermissionPlugin', $idQuote);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteLocked(QuoteTransfer $quoteTransfer): bool
     {
         return $this->getFactory()
@@ -89,33 +81,16 @@ class SharedCartOperationsWidget extends AbstractWidget
             ->isQuoteLocked($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isQuoteOwner(QuoteTransfer $quoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         return $customerTransfer->getCustomerReference() === $quoteTransfer->getCustomerReference();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isSharedCartAllowed(CustomerTransfer $customerTransfer): bool
     {
         return (bool)$customerTransfer->getCompanyUserTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $currentQuoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isDeleteCartAllowed(QuoteTransfer $currentQuoteTransfer, CustomerTransfer $customerTransfer): bool
     {
         $ownedQuoteNumber = 0;
@@ -128,17 +103,11 @@ class SharedCartOperationsWidget extends AbstractWidget
         return $ownedQuoteNumber > 1 || (!$this->isQuoteOwner($currentQuoteTransfer, $customerTransfer) && $ownedQuoteNumber > 0);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'SharedCartOperationsWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/shared-cart-operations/shared-cart-operations.twig';

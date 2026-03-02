@@ -16,10 +16,6 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class CartListPermissionGroupWidget extends AbstractWidget
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param bool $isQuoteDeletable
-     */
     public function __construct(QuoteTransfer $quoteTransfer, bool $isQuoteDeletable)
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -30,11 +26,6 @@ class CartListPermissionGroupWidget extends AbstractWidget
         $this->addIsQuoteDeletableParameter($isQuoteDeletable, $quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addAccessTypeParameter(QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter(
@@ -45,22 +36,11 @@ class CartListPermissionGroupWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addCartParameter(QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter('cart', $quoteTransfer);
     }
 
-    /**
-     * @param bool $isQuoteDeletable
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addIsQuoteDeletableParameter(bool $isQuoteDeletable, QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter(
@@ -69,37 +49,21 @@ class CartListPermissionGroupWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
     protected function addIsSharingAllowedParameter(CustomerTransfer $customerTransfer): void
     {
         $this->addParameter('isSharingAllowed', $this->isSharingAllowed($customerTransfer));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return bool
-     */
     protected function isSharingAllowed(CustomerTransfer $customerTransfer): bool
     {
         return $customerTransfer->getCompanyUserTransfer() && $customerTransfer->getCompanyUserTransfer()->getIdCompanyUser();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'CartListPermissionGroupWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@SharedCartWidget/views/multi-cart-permission/multi-cart-permission.twig';

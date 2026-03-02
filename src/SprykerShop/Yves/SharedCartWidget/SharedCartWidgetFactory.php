@@ -15,33 +15,21 @@ use SprykerShop\Yves\SharedCartWidget\Dependency\Client\SharedCartWidgetToShared
 
 class SharedCartWidgetFactory extends AbstractFactory
 {
-    /**
-     * @return \SprykerShop\Yves\SharedCartWidget\Dependency\Client\SharedCartWidgetToCustomerClientInterface
-     */
     public function getCustomerClient(): SharedCartWidgetToCustomerClientInterface
     {
         return $this->getProvidedDependency(SharedCartWidgetDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\SharedCartWidget\Dependency\Client\SharedCartWidgetToMultiCartClientInterface
-     */
     public function getMultiCartClient(): SharedCartWidgetToMultiCartClientInterface
     {
         return $this->getProvidedDependency(SharedCartWidgetDependencyProvider::CLIENT_MULTI_CART);
     }
 
-    /**
-     * @return \SprykerShop\Yves\SharedCartWidget\Dependency\Client\SharedCartWidgetToQuoteClientInterface
-     */
     public function getQuoteClient(): SharedCartWidgetToQuoteClientInterface
     {
         return $this->getProvidedDependency(SharedCartWidgetDependencyProvider::CLIENT_QUOTE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\SharedCartWidget\Dependency\Client\SharedCartWidgetToSharedCartClientInterface
-     */
     public function getSharedCartClient(): SharedCartWidgetToSharedCartClientInterface
     {
         return $this->getProvidedDependency(SharedCartWidgetDependencyProvider::CLIENT_SHARED_CART);
