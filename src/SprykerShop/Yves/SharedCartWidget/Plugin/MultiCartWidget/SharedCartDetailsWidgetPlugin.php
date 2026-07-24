@@ -23,11 +23,10 @@ class SharedCartDetailsWidgetPlugin extends AbstractWidgetPlugin implements Shar
     use PermissionAwareTrait;
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * {@inheritDoc}
+     *
      * @param array<string, mixed> $actions
      * @param array<string>|null $widgetList
-     *
-     * @return void
      */
     public function initialize(QuoteTransfer $quoteTransfer, array $actions, ?array $widgetList = null): void
     {
@@ -41,7 +40,7 @@ class SharedCartDetailsWidgetPlugin extends AbstractWidgetPlugin implements Shar
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the name of the widget as it's used in templates.
      *
      * @api
@@ -54,7 +53,7 @@ class SharedCartDetailsWidgetPlugin extends AbstractWidgetPlugin implements Shar
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the template file path to render the widget.
      *
      * @api

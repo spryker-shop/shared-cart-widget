@@ -15,12 +15,17 @@ use SprykerShop\Yves\MultiCartWidget\Dependency\Plugin\SharedCartWidget\SharedCa
  */
 class SharedCartAddSeparateProductWidgetPlugin extends AbstractWidgetPlugin implements SharedCartAddSeparateProductWidgetPluginInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
     public function initialize(): void
     {
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the name of the widget as it's used in templates.
      *
      * @api
@@ -33,7 +38,7 @@ class SharedCartAddSeparateProductWidgetPlugin extends AbstractWidgetPlugin impl
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the template file path to render the widget.
      *
      * @api

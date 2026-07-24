@@ -19,6 +19,11 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
  */
 class SharedCartShareWidgetPlugin extends AbstractWidgetPlugin implements SharedCartShareWidgetPluginInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
     public function initialize(QuoteTransfer $quoteTransfer): void
     {
         $widget = new SharedCartShareWidget($quoteTransfer);
@@ -27,7 +32,7 @@ class SharedCartShareWidgetPlugin extends AbstractWidgetPlugin implements Shared
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the name of the widget as it's used in templates.
      *
      * @api
@@ -40,7 +45,7 @@ class SharedCartShareWidgetPlugin extends AbstractWidgetPlugin implements Shared
     }
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Returns the template file path to render the widget.
      *
      * @api
