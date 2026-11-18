@@ -48,12 +48,28 @@ class SharedCartDetailsWidget extends AbstractWidget
         $writeAllowed = $this->can(WriteSharedCartPermissionPlugin::KEY, $quoteTransfer->getIdQuote());
         $viewAllowed = $this->can(ReadSharedCartPermissionPlugin::KEY, $quoteTransfer->getIdQuote()) || $writeAllowed;
         $deleteAllowed = $this->isDeleteCartAllowed($quoteTransfer) && $writeAllowed;
-        $actions['view'] = isset($actions['view']) ? $actions['view'] && $viewAllowed : $viewAllowed;
-        $actions['update'] = isset($actions['update']) ? $actions['update'] && $writeAllowed : $writeAllowed;
-        $actions['set_default'] = isset($actions['set_default']) ? $actions['set_default'] && $viewAllowed : $viewAllowed;
-        $actions['delete'] = isset($actions['delete']) ? $actions['delete'] && $deleteAllowed : $deleteAllowed;
+        $actions['view'] = $this->isActionAllowed($actions, 'view', $viewAllowed);
+        $actions['update'] = $this->isActionAllowed($actions, 'update', $writeAllowed);
+        $actions['set_default'] = $this->isActionAllowed($actions, 'set_default', $viewAllowed);
+        $actions['delete'] = $this->isActionAllowed($actions, 'delete', $deleteAllowed);
 
         return $actions;
+    }
+
+    /**
+     * @param array<string, mixed> $actions
+     * @param string $actionName
+     * @param bool $isAllowed
+     *
+     * @return bool
+     */
+    protected function isActionAllowed(array $actions, string $actionName, bool $isAllowed): bool
+    {
+        if (!isset($actions[$actionName])) {
+            return $isAllowed;
+        }
+
+        return $actions[$actionName] && $isAllowed;
     }
 
     protected function isDeleteCartAllowed(QuoteTransfer $currentQuoteTransfer): bool
